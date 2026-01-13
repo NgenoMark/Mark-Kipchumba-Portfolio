@@ -3,317 +3,1593 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mark Kipchumba | Portfolio</title>
+  <title>Mark Kipchumba | Software Engineer Portfolio</title>
+  <meta name="description" content="Software Engineer specializing in Backend Development, Mobile Applications, and Full-Stack Engineering with experience at Indra Limited">
+  <meta name="keywords" content="Software Engineer, Backend Developer, Flutter, Spring Boot, Laravel, Java, Python, Mobile Development">
   <link rel="icon" href="images/hacker.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    /* ===== RESET & BASE STYLES ===== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #ffcc00;
+      --primary-dark: #e6b800;
+      --secondary: #6c63ff;
+      --dark: #121212;
+      --dark-light: #1e1e2f;
+      --dark-lighter: #2c2c3c;
+      --light: #e0e0e0;
+      --light-gray: #aaa;
+      --success: #4CAF50;
+      --danger: #f44336;
+      --font-main: 'Outfit', sans-serif;
+    }
+
+    html {
       scroll-behavior: smooth;
+      scroll-padding-top: 80px;
     }
 
     body {
-      font-family: 'Outfit', sans-serif;
-      background-color: #121212;
-      color: #e0e0e0;
-      line-height: 1.6;
+      font-family: var(--font-main);
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.7;
+      overflow-x: hidden;
+      font-size: 18px;
     }
 
-    header {
-      background: linear-gradient(120deg, #1e1e2f, #2c2c3c);
-      color: white;
-      text-align: center;
-      padding: 60px 20px 80px;
-      position: relative;
-    }
-
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      height: 50px;
-      background-color: #121212;
-      border-radius: 0 0 50% 50%;
-    }
-
-    nav a {
-      color: #ffffffcc;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #ffcc00;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
     section {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeInSection 1s forwards;
+      padding: 100px 0;
     }
 
-    section:nth-of-type(2) {
-      animation-delay: 0.2s;
-    }
-    section:nth-of-type(3) {
-      animation-delay: 0.4s;
-    }
-    section:nth-of-type(4) {
-      animation-delay: 0.6s;
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      line-height: 1.2;
     }
 
     h2 {
+      font-size: 2.8rem;
+      margin-bottom: 60px;
       text-align: center;
-      font-size: 2.2em;
-      margin-bottom: 40px;
-      color: #ffcc00;
       position: relative;
     }
 
     h2::after {
       content: '';
-      width: 60px;
-      height: 4px;
-      background: #ffcc00;
       position: absolute;
+      bottom: -15px;
       left: 50%;
-      bottom: -10px;
       transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
     }
 
-    .about-content {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 40px;
-    }
-
-    .about-content img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      border: 4px solid #444;
-      object-fit: cover;
-    }
-
-    .about-content p {
-      flex: 1;
-      font-size: 1.1rem;
-      color: #ccc;
-    }
-
-    .project {
-      background: #1e1e2f;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 30px;
-      margin-bottom: 40px;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-
-    .project:hover {
-      box-shadow: 0 0 30px rgba(255, 204, 0, 0.6);
-      transform: translateY(-5px);
-    }
-
-    .project.reverse {
-      flex-direction: row-reverse;
-    }
-
-    .project img {
-      width: 100%;
-      max-width: 300px;
-      height: auto;
-      border-radius: 10px;
-      object-fit: contain;
-    }
-
-    .project-details {
-      flex: 1;
-    }
-
-    .project-details h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      color: #ffcc00;
-    }
-
-    .project-details p {
-      margin: 10px 0;
-      color: #ccc;
-    }
-
-    .github-link {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #24292e;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
+    .section-subtitle {
+      text-align: center;
+      color: var(--light-gray);
+      font-size: 1.2rem;
       margin-top: 10px;
-      transition: background 0.3s;
+      margin-bottom: 50px;
     }
 
-    .github-link:hover {
-      background: #0366d6;
-    }
-
-    form {
-      background: #1e1e2f;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-    }
-
-    form input,
-    form textarea,
-    form button {
-      width: 100%;
-      padding: 15px;
-      margin-top: 12px;
-      border-radius: 6px;
-      border: 1px solid #555;
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
       font-size: 1rem;
-      background: #2c2c3c;
-      color: #eee;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font-main);
     }
 
-    form button {
-      background: #ffcc00;
-      color: #000;
-      font-weight: bold;
+    .btn-primary {
+      background: var(--primary);
+      color: var(--dark);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255, 204, 0, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 204, 0, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .btn-small {
+      padding: 10px 24px;
+      font-size: 0.9rem;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 20px 40px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo span {
+      color: var(--light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 5px 0;
+      font-size: 1rem;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links .resume-btn {
+      background: var(--primary);
+      color: var(--dark);
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-left: 20px;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
       cursor: pointer;
     }
 
-    form button:hover {
-      background: #fff176;
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 150px 40px 100px;
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+      position: relative;
+      overflow: hidden;
     }
 
-    .favicons {
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(rgba(255, 204, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 204, 0, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 0;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      color: var(--light);
+      margin-bottom: 15px;
+      line-height: 1.1;
+    }
+
+    .hero .title {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .hero .contact-info {
       display: flex;
-      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+      color: var(--light-gray);
+    }
+
+    .hero .contact-info div {
+      display: flex;
       align-items: center;
-      gap: 70px;
-      margin-top: 40px;
+      gap: 8px;
+    }
+
+    .hero .contact-info i {
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--light-gray);
+      max-width: 700px;
+      margin-bottom: 40px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
-    .favicons img {
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+    }
+
+    .stat-label {
+      color: var(--light-gray);
+      font-size: 1rem;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-content {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 20px;
+      border: 3px solid var(--primary);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      z-index: -1;
+    }
+
+    .about-text h3 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 25px;
+      color: var(--light-gray);
+      font-size: 1.1rem;
+    }
+
+    .strengths {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .strength-tag {
+      background: rgba(108, 99, 255, 0.1);
+      color: var(--secondary);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid rgba(108, 99, 255, 0.2);
+    }
+
+    /* ===== EXPERIENCE SECTION ===== */
+    .experience-card {
+      background: var(--dark-light);
+      border-radius: 15px;
+      padding: 40px;
+      margin-bottom: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .experience-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .experience-title h3 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .experience-title h4 {
+      color: var(--light-gray);
+      font-weight: 500;
+    }
+
+    .experience-date {
+      background: var(--primary);
+      color: var(--dark);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+
+    .experience-details ul {
+      padding-left: 25px;
+    }
+
+    .experience-details li {
+      margin-bottom: 15px;
+      color: var(--light-gray);
+      position: relative;
+    }
+
+    .experience-details li::before {
+      content: '▸';
+      color: var(--primary);
+      position: absolute;
+      left: -20px;
+    }
+
+    /* ===== SKILLS SECTION ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .skill-category {
+      background: var(--dark-light);
+      padding: 30px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 204, 0, 0.1);
+    }
+
+    .skill-category h3 {
+      color: var(--primary);
+      margin-bottom: 25px;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-category h3 i {
+      font-size: 1.3rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-item {
+      background: rgba(255, 204, 0, 0.1);
+      color: var(--primary);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 204, 0, 0.2);
+    }
+
+    /* ===== EDUCATION & CERTIFICATES SECTION ===== */
+    .education-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .education-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .education-card {
+      background: var(--dark-light);
+      padding: 30px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .education-card h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+    }
+
+    .education-details {
+      color: var(--light-gray);
+      margin-bottom: 25px;
+    }
+
+    .education-details .date {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .coursework {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .course-tag {
+      background: rgba(108, 99, 255, 0.1);
+      color: var(--secondary);
+      padding: 6px 15px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+    }
+
+    .certificates-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .certificate-card {
+      background: var(--dark-light);
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .certificate-card:hover {
+      border-color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .certificate-info h4 {
+      color: var(--light);
+      margin-bottom: 8px;
+    }
+
+    .certificate-info p {
+      color: var(--light-gray);
+      font-size: 0.9rem;
+    }
+
+    .certificate-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ===== PROJECTS SECTION ===== */
+    .projects-grid {
+      display: grid;
+      gap: 60px;
+      margin-top: 50px;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      background: var(--dark-light);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .project-image {
+      height: 100%;
+      min-height: 350px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
+    }
+
+    .project-content {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project-content h3 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .project-subtitle {
+      color: var(--light-gray);
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+    }
+
+    .project-description {
+      color: var(--light-gray);
+      margin-bottom: 25px;
+      font-size: 1.05rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .tech-tag {
+      background: rgba(108, 99, 255, 0.1);
+      color: var(--secondary);
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .project-links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--light);
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .project-links a:hover {
+      background: var(--primary);
+      color: var(--dark);
+    }
+
+    .accuracy-badge {
+      display: inline-block;
+      background: linear-gradient(45deg, #4CAF50, #8BC34A);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 10px 0;
+    }
+
+    /* ===== VOLUNTEER SECTION ===== */
+    .volunteer-card {
+      background: var(--dark-light);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 600px;
+      margin: 40px auto;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .volunteer-card h3 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .volunteer-card h4 {
+      color: var(--light-gray);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .volunteer-card p {
+      color: var(--light-gray);
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-info {
+      padding-right: 30px;
+    }
+
+    .contact-info h3 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      color: var(--light-gray);
+      margin-bottom: 40px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .contact-icon {
       width: 50px;
       height: 50px;
+      background: rgba(255, 204, 0, 0.1);
       border-radius: 50%;
-      border: 2px solid #444;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      padding: 5px;
-      background-color: #2c2c3c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.2rem;
     }
 
-    .favicons img:hover {
-      transform: scale(1.15);
-      box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
-      border-color: #ffcc00;
+    .contact-item div h4 {
+      color: var(--light);
+      margin-bottom: 5px;
     }
 
-    @keyframes fadeInSection {
+    .contact-item div p {
+      color: var(--light-gray);
+      margin: 0;
+    }
+
+    .contact-form {
+      background: var(--dark-light);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--light);
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: var(--light);
+      font-size: 1rem;
+      font-family: var(--font-main);
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      font-size: 1.1rem;
+    }
+
+    /* ===== SOCIAL LINKS ===== */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 60px 0;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background: var(--dark-light);
+      border-radius: 50%;
+      color: var(--light);
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      color: var(--dark);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(255, 204, 0, 0.2);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark-light);
+      padding: 60px 0 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-content {
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--light-gray);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      color: var(--light-gray);
+      margin-top: 40px;
+      font-size: 0.9rem;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    @media (max-width: 768px) {
-      .about-content,
-      .project {
-        flex-direction: column;
+    .fade-in {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 1024px) {
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+      
+      .hero .title {
+        font-size: 2rem;
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
         text-align: center;
+      }
+      
+      .about-image {
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+      
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--dark);
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero {
+        padding: 120px 20px 60px;
+        text-align: center;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero .title {
+        font-size: 1.8rem;
+      }
+      
+      .hero .contact-info {
+        justify-content: center;
+      }
+      
+      .hero-btns {
+        justify-content: center;
+      }
+      
+      .hero-stats {
+        justify-content: center;
+      }
+      
+      h2 {
+        font-size: 2.2rem;
+      }
+      
+      section {
+        padding: 60px 0;
+      }
+      
+      .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .experience-date {
+        align-self: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero .title {
+        font-size: 1.5rem;
+      }
+      
+      .hero-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .project-links {
+        flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <h1>Mark Kipchumba</h1>
-    <p>Full Stack Developer | UI/UX Designer | Innovator</p>
-    <nav>
-      <a href="#about">About</a>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="#" class="logo">MK<span>.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about" class="active">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
-    </nav>
-  </header>
+      <a href="Ngeno Mark Kipchumba Resume.pdf" class="btn btn-primary resume-btn" target="_blank" download>Download Resume</a>
+    </div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1 class="fade-in">Mark Kipchumba</h1>
+      <div class="title fade-in" style="animation-delay: 0.1s">Software Engineer | Backend Developer | AI/ML Engineer </div>
+      <div class="contact-info fade-in" style="animation-delay: 0.2s">
+        <div><i class="fas fa-phone"></i> +254 769 990 832</div>
+        <div><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</div>
+        <div><i class="fas fa-envelope"></i> kipchumbamark48@gmail.com</div>
+      </div>
+      <p class="fade-in" style="animation-delay: 0.3s">
+        Results-driven Software Engineer with strong foundation in backend development, mobile application design, 
+        and full-stack engineering. Proven ability to develop user-centered solutions that streamline business 
+        operations and improve data management.
+      </p>
+      <div class="hero-btns fade-in" style="animation-delay: 0.4s">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+      </div>
+      <div class="hero-stats fade-in" style="animation-delay: 0.5s">
+        <div class="stat-item">
+          <span class="stat-number">3+</span>
+          <span class="stat-label">Major Projects</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">10+</span>
+          <span class="stat-label">Technologies</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">92%</span>
+          <span class="stat-label">ML Accuracy</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- About Section -->
   <section id="about">
-    <h2>About Me</h2>
-    <div class="about-content">
-      <img src="images/mark.png" alt="Mark Kipchumba" />
-      <p>
-        Hi, I'm <strong>Mark Kipchumba</strong> — a passionate full-stack developer who thrives on building scalable digital solutions. Whether it's a responsive web interface or an API-powered backend, I focus on clean code and user-centered design. I'm also fascinated by problem solving, emerging technologies, and blending creativity with logic.
-      </p>
+    <div class="container">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <div class="about-image">
+          <img src="images/mark.png" alt="Mark Kipchumba - Software Engineer">
+        </div>
+        <div class="about-text">
+          <h3>Software Engineer & Innovator</h3>
+          <p>
+            I'm a passionate Software Engineer with expertise in backend development, mobile applications, 
+            and full-stack engineering. My experience at Indra Limited has equipped me with hands-on skills 
+            in developing scalable solutions that solve real-world business problems.
+          </p>
+          <p>
+            Skilled in Java, Python, Flutter, Spring Boot, and modern development frameworks, I'm committed 
+            to continuous learning and delivering high-quality, scalable software solutions that drive business value.
+          </p>
+          <p>
+            I thrive on turning complex problems into elegant solutions and believe in the power of technology 
+            to transform businesses and improve lives.
+          </p>
+          
+          <h4 style="color: var(--primary); margin-top: 30px; margin-bottom: 15px;">Key Strengths</h4>
+          <div class="strengths">
+            <span class="strength-tag">Effective Communication</span>
+            <span class="strength-tag">Problem-Solving</span>
+            <span class="strength-tag">Teamwork & Collaboration</span>
+            <span class="strength-tag">Adaptability</span>
+            <span class="strength-tag">Critical Thinking</span>
+            <span class="strength-tag">Creative Problem-Solving</span>
+            <span class="strength-tag">Time Management</span>
+            <span class="strength-tag">Self-Motivation & Initiative</span>
+            <span class="strength-tag">Quick Learner</span>
+            <span class="strength-tag">User-Centered Design</span>
+            <span class="strength-tag">Leadership</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" style="background: rgba(30, 30, 47, 0.5);">
+    <div class="container">
+      <h2>Professional Experience</h2>
+      <div class="experience-card fade-in">
+        <div class="experience-header">
+          <div class="experience-title">
+            <h3>Student Attaché (Backend Engineering)</h3>
+            <h4>Indra Limited</h4>
+          </div>
+          <div class="experience-date">Jan 2025 - Mar 2025</div>
+        </div>
+        <div class="experience-details">
+          <ul>
+            <li>Developed a mobile application using Flutter and Spring Boot to streamline vendor and field surveyor collaboration</li>
+            <li>Enabled real-time communication and task management across distributed teams</li>
+            <li>Implemented backend services and database optimization that improved operational efficiency</li>
+            <li>Reduced survey turnaround time by facilitating direct data submission from field to central analysis systems</li>
+            <li>Collaborated with cross-functional development teams to identify, analyze, and implement system modifications</li>
+            <li>Participated in code reviews, debugging sessions, and deployment processes</li>
+            <li>Gained hands-on experience in professional software development workflows</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2>Skills & Abilities</h2>
+      <div class="skills-grid">
+        <div class="skill-category fade-in">
+          <h3><i class="fas fa-code"></i> Programming Languages</h3>
+          <div class="skill-list">
+            <span class="skill-item">Java</span>
+            <span class="skill-item">Python</span>
+            <span class="skill-item">HTML/CSS</span>
+            <span class="skill-item">JavaScript</span>
+          </div>
+        </div>
+        <div class="skill-category fade-in" style="animation-delay: 0.1s">
+          <h3><i class="fas fa-cogs"></i> Frameworks & Tools</h3>
+          <div class="skill-list">
+            <span class="skill-item">Spring Boot</span>
+            <span class="skill-item">Laravel</span>
+            <span class="skill-item">Flutter</span>
+          </div>
+        </div>
+        <div class="skill-category fade-in" style="animation-delay: 0.2s">
+          <h3><i class="fas fa-mobile-alt"></i> Mobile Development</h3>
+          <div class="skill-list">
+            <span class="skill-item">Android (Flutter)</span>
+            <span class="skill-item">iOS (Flutter)</span>
+          </div>
+        </div>
+        <div class="skill-category fade-in" style="animation-delay: 0.3s">
+          <h3><i class="fas fa-database"></i> Database Management</h3>
+          <div class="skill-list">
+            <span class="skill-item">Oracle</span>
+            <span class="skill-item">MySQL</span>
+          </div>
+        </div>
+        <div class="skill-category fade-in" style="animation-delay: 0.4s">
+          <h3><i class="fas fa-brain"></i> Concepts & Methodologies</h3>
+          <div class="skill-list">
+            <span class="skill-item">Machine Learning</span>
+            <span class="skill-item">Artificial Intelligence</span>
+            <span class="skill-item">Object-Oriented Programming</span>
+            <span class="skill-item">Agile Development</span>
+          </div>
+        </div>
+        <div class="skill-category fade-in" style="animation-delay: 0.5s">
+          <h3><i class="fas fa-tools"></i> Version Control</h3>
+          <div class="skill-list">
+            <span class="skill-item">Git</span>
+            <span class="skill-item">GitHub</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Certificates Section -->
+  <section id="education" style="background: rgba(30, 30, 47, 0.5);">
+    <div class="container">
+      <h2>Education & Certifications</h2>
+      <div class="education-container">
+        <!-- Education -->
+        <div class="education-card fade-in">
+          <h3>Starthmore University</h3>
+          <div class="education-details">
+            <div class="date">Expected Graduation: June 2026</div>
+            <p>Bachelor's Degree in Informatics and Computer Science</p>
+            <p>Nairobi, Kenya</p>
+          </div>
+          <h4 style="color: var(--primary); margin: 20px 0 10px;">Relevant Coursework</h4>
+          <div class="coursework">
+            <span class="course-tag">Data Structures & Algorithms</span>
+            <span class="course-tag">Artificial Intelligence</span>
+            <span class="course-tag">Database Management</span>
+            <span class="course-tag">Advanced Database Systems</span>
+            <span class="course-tag">Software Engineering</span>
+            <span class="course-tag">Cybersecurity</span>
+            <span class="course-tag">Human-Computer Interaction</span>
+            <span class="course-tag">Mobile Application Development</span>
+          </div>
+        </div>
+
+        <!-- Certificates -->
+        <div class="certificates-grid">
+          <div class="certificate-card fade-in" style="animation-delay: 0.1s">
+            <div class="certificate-info">
+              <h4>CISCO IT Essentials</h4>
+              <p>Infrastructure and Network Fundamentals</p>
+            </div>
+            <a href="https://www.credly.com/badges/12ed3278-e761-4183-8ddc-dafecc146c48/public_url" 
+               target="_blank" class="certificate-link">
+              View Credential <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+          <div class="certificate-card fade-in" style="animation-delay: 0.2s">
+            <div class="certificate-info">
+              <h4>CCNA: Introduction to Networks</h4>
+              <p>Network Infrastructure and Protocols</p>
+            </div>
+            <a href="https://www.credly.com/badges/8fd07c1f-48d3-4937-bbdc-2dc2a01062c2/public_url" 
+               target="_blank" class="certificate-link">
+              View Credential <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Projects Section -->
   <section id="projects">
-    <h2>Featured Projects</h2>
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card fade-in">
+          <div class="project-image">
+            <img src="images/mapvendor2.jpg" alt="Indra Map Vendor Mobile Application">
+          </div>
+          <div class="project-content">
+            <h3>Indra Map Vendor</h3>
+            <p class="project-subtitle">Mobile Application for Field Surveyors</p>
+            <p class="project-description">
+              Developed a mobile application connecting map vendors with field surveyors to streamline material 
+              survey operations and resource allocation. The solution improved communication efficiency between 
+              field teams and vendors, reducing time spent on logistics coordination and material procurement.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Spring Boot</span>
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Mobile Development</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/NgenoMark/IndraMapVendor" target="_blank">
+                <i class="fab fa-github"></i> View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
 
-    <div class="project">
-      <img src="images/spacehub.jpg" alt="SpaceHub Screenshot" />
-      <div class="project-details">
-        <h3>SpaceHub</h3>
-        <p><strong>Description:</strong> A platform aggregating indoor and outdoor spaces available for event bookings.</p>
-        <p><strong>Technologies:</strong> HTML/CSS, Laravel, MySQL</p>
-        <a href="https://github.com/NgenoMark/Space-Hub" target="_blank" class="github-link">View on GitHub</a>
-      </div>
-    </div>
+        <!-- Project 2 -->
+        <div class="project-card fade-in" style="animation-delay: 0.2s">
+          <div class="project-content">
+            <h3>Space Hub</h3>
+            <p class="project-subtitle">Event Venue Booking Web Platform</p>
+            <p class="project-description">
+              Designed and developed a web platform using Laravel framework that connects users with event 
+              venues and spaces. The application features user authentication, booking management, and search 
+              functionality, demonstrating full-stack web development capabilities and understanding of 
+              business process automation.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Laravel</span>
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">HTML/CSS</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/NgenoMark/Space-Hub" target="_blank">
+                <i class="fab fa-github"></i> View on GitHub
+              </a>
+            </div>
+          </div>
+          <div class="project-image">
+            <img src="images/spacehub.jpg" alt="Space Hub Web Application">
+          </div>
+        </div>
 
-    <div class="project reverse">
-      <img src="images/mapvendor2.jpg" alt="Map Vendor Screenshot" />
-      <div class="project-details">
-        <h3>Map Vendor</h3>
-        <p><strong>Description:</strong> A mobile platform connecting clients to licensed electricians for real-time installations.</p>
-        <p><strong>Technologies:</strong> Flutter, Spring Boot, Oracle</p>
-        <a href="https://github.com/NgenoMark/IndraMapVendor" target="_blank" class="github-link">View on GitHub</a>
+        <!-- Project 3 -->
+        <div class="project-card fade-in" style="animation-delay: 0.4s">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Smart Neos Healthcare App">
+          </div>
+          <div class="project-content">
+            <h3>Smart Neos</h3>
+            <p class="project-subtitle">AI-Powered Preterm Birth Prediction</p>
+            <div class="accuracy-badge">
+              <i class="fas fa-chart-line"></i> 92% Accuracy | 87% Recall
+            </div>
+            <p class="project-description">
+              Developed a mobile application using Flutter, Java Spring Boot, and Python with machine learning 
+              to predict preterm birth risk. The app features early-warning predictions supporting timely 
+              interventions and demonstrates skills in mobile development, AI integration, and healthcare-focused 
+              problem solving.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Spring Boot</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Machine Learning</span>
+              <span class="tech-tag">Healthcare Tech</span>
+            </div>
+            <div class="project-links">
+              <a href="#" target="_blank">
+                <i class="fab fa-github"></i> View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Social Icons -->
-  <div class="favicons">
-    <a href="https://www.instagram.com/ngeno.mark" target="_blank" title="Instagram">
-      <img src="images/instagram.png" alt="Instagram" />
-    </a>
-    <a href="https://www.linkedin.com/in/mark-kipchumba-a68879276/" target="_blank" title="Linkedin">
-      <img src="images/linkedin.png" alt="Linkedin" />
-    </a>
-    <a href="https://github.com/NgenoMark" target="_blank" title="GitHub">
-      <img src="images/github.png" alt="GitHub" />
-    </a>
+  <!-- Volunteer Section -->
+  <section style="background: rgba(30, 30, 47, 0.5);">
+    <div class="container">
+      <h2>Volunteer Experience</h2>
+      <div class="volunteer-card fade-in">
+        <h3>Community Service Volunteer</h3>
+        <h4>Carmel Catholic School</h4>
+        <div class="experience-date">Jan 2024 - Mar 2024</div>
+        <p style="margin-top: 20px;">
+          Contributed to school operations across multiple roles including farm management, food services 
+          coordination, and computer lab assistance. Demonstrated adaptability, reliability, and commitment 
+          to community development while managing diverse responsibilities in a collaborative environment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Links -->
+  <div class="container">
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/mark-kipchumba-a68879276/" target="_blank" class="social-link" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://github.com/NgenoMark" target="_blank" class="social-link" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.instagram.com/ngeno.mark" target="_blank" class="social-link" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="mailto:kipchumbamark48@gmail.com" class="social-link" title="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
   </div>
 
   <!-- Contact Section -->
   <section id="contact">
-    <h2>Contact Me</h2>
-    <form action="mailto:kipchumbamark48@gmail.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <div class="container">
+      <h2>Get In Touch</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Let's Connect</h3>
+          <p>
+            I'm currently open to new opportunities in software engineering, whether it's a full-time position, 
+            internship, or collaborative project. Feel free to reach out for any questions or opportunities!
+          </p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h4>Email</h4>
+                <p>kipchumbamark48@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <h4>Phone</h4>
+                <p>+254 769 990 832</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h4>Location</h4>
+                <p>Nairobi, Kenya</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div>
+                <h4>Education</h4>
+                <p>Starthmore University (2026)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" class="form-control" placeholder="your.email@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" class="form-control" placeholder="Opportunity or Inquiry" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" class="form-control" placeholder="Tell me about your project or opportunity..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">Mark Kipchumba</div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <a href="Ngeno Mark Kipchumba Resume.pdf" target="_blank" download>Download Resume</a>
+        </div>
+        <p class="copyright">
+          &copy; 2024 Mark Kipchumba. All rights reserved.<br>
+          Bachelor of Informatics and Computer Science | Starthmore University
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+
+    // Form Submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      // Create mailto link
+      const mailtoLink = `mailto:kipchumbamark48@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+      
+      // Open email client
+      window.location.href = mailtoLink;
+      
+      // Show success message
+      alert('Thank you for your message! Your email client will open shortly.');
+      
+      // Reset form
+      this.reset();
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.project-card, .experience-card, .skill-category, .education-card, .certificate-card, .volunteer-card').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Active navigation link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset;
+      
+      sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        const correspondingLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+        
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          correspondingLink?.classList.add('active');
+        } else {
+          correspondingLink?.classList.remove('active');
+        }
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Initialize animations on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.fade-in').forEach((el, index) => {
+        el.style.animationDelay = `${index * 0.1}s`;
+      });
+    });
+  </script>
 </body>
 </html>
